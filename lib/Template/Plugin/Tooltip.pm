@@ -93,7 +93,7 @@ use HTML::Tooltip::Javascript ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.01';
+	$VERSION = '0.02';
 }
 
 
@@ -152,7 +152,7 @@ Bugs should be submitted via the CPAN bug tracker, located at
 
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Template%3A%3APlugin%3A%3ATooltip>
 
-For other issues, contact the author.
+For other issues, or commercial enhancement or support, contact the author..
 
 =head1 AUTHOR
 
