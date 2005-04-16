@@ -1,5 +1,8 @@
 Revision history for Perl extension Template::Plugin::Tooltip
 
+0.03 Sun Apr 17 2005
+	- Minor POD corrections
+
 0.02 Tue Feb 15 2005
 	- Removing braindead Build.PL
 

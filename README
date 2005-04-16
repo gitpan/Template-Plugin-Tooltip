@@ -68,7 +68,7 @@ DESCRIPTION
     JavaScript library that drives the whole thing.
 
     To do this, simple add the following to the end of the page, or to the
-    E<LT>headE<GT> section of your HTML document.
+    <head> section of your HTML document.
 
       [% tooltip() %]
 
@@ -78,8 +78,7 @@ DESCRIPTION
 SUPPORT
     Bugs should be submitted via the CPAN bug tracker, located at
 
-    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Template%3A%3APlugin%3A%
-    3ATooltip>
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Template-Plugin-Tooltip>
 
     For other issues, or commercial enhancement or support, contact the
     author..

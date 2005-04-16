@@ -77,7 +77,7 @@ The one additional step you will need to do is load in the tooltip
 JavaScript library that drives the whole thing.
 
 To do this, simple add the following to the end of the page, or to the
-E<LT>headE<GT> section of your HTML document.
+E<lt>headE<gt> section of your HTML document.
 
   [% tooltip() %]
 
@@ -93,7 +93,7 @@ use HTML::Tooltip::Javascript ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.02';
+	$VERSION = '0.03';
 }
 
 
@@ -150,7 +150,7 @@ sub at_end {
 
 Bugs should be submitted via the CPAN bug tracker, located at
 
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Template%3A%3APlugin%3A%3ATooltip>
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Template-Plugin-Tooltip>
 
 For other issues, or commercial enhancement or support, contact the author..
 
