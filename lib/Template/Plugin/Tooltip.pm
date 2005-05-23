@@ -15,8 +15,8 @@ Template::Plugin::Tooltip - Template Toolkit plugin for HTML::Tooltip::JavaScrip
   Add a tooltip to a link
   <a href="foo" [% tooltip(
       html_tooltip_content,
-      param => value,
-      param => value,
+      param, value,
+      param, value,
       %]>Link content</a>
 
 =head1 DESCRIPTION
@@ -49,7 +49,7 @@ the following.
 In the same way you pass params to the HTML::Tooltip::Javascript
 constructor, you can also pass params when loading in the Tooltip plugin.
 
-  [% USE tooltip('param' => 'value') %]
+  [% USE tooltip('param', 'value') %]
 
 =head2 Using the Tooltip Generator
 
@@ -69,7 +69,7 @@ The first param is literal HTML content, and you can provide any additional
 parameters you want for the tooltip, as you would do create the tooltip
 directly.
 
-  <a href="#item" [% tooltip('A tooltip', 'bgcolor' => 'pink') %]>item</a>
+  <a href="#item" [% tooltip('A tooltip', 'bgcolor', 'pink') %]>item</a>
 
 =head2 Initialising the Tooltip Library
 
@@ -93,7 +93,7 @@ use HTML::Tooltip::Javascript ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.03';
+	$VERSION = '0.04';
 }
 
 
@@ -156,7 +156,7 @@ For other issues, or commercial enhancement or support, contact the author..
 
 =head1 AUTHOR
 
-Adam Kennedy (Maintainer), L<http://ali.as/>, cpan@ali.as
+Adam Kennedy , L<http://ali.as/>, cpan@ali.as
 
 =head1 ACKOWLEDGEMENTS
 

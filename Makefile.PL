@@ -2,7 +2,7 @@ use inc::Module::Install;
 
 name          ( 'Template-Plugin-Tooltip'              );
 abstract      ( 'Template Toolkit plugin for HTML::Tooltip::JavaScript' );
-author        ( 'Adam Kennedy<cpan@ali.as>'            );
+author        ( 'Adam Kennedy <cpan@ali.as>'           );
 version_from  ( 'lib/Template/Plugin/Tooltip.pm'       );
 license       ( 'perl'                                 );
 

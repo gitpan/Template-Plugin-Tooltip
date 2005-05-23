@@ -10,8 +10,8 @@ SYNOPSIS
       Add a tooltip to a link
       <a href="foo" [% tooltip(
           html_tooltip_content,
-          param => value,
-          param => value,
+          param, value,
+          param, value,
           %]>Link content</a>
 
 DESCRIPTION
@@ -42,7 +42,7 @@ DESCRIPTION
     constructor, you can also pass params when loading in the Tooltip
     plugin.
 
-      [% USE tooltip('param' => 'value') %]
+      [% USE tooltip('param', 'value') %]
 
   Using the Tooltip Generator
     HTML::Tooltip::Javascript provides one simple method through which you
@@ -61,7 +61,7 @@ DESCRIPTION
     additional parameters you want for the tooltip, as you would do create
     the tooltip directly.
 
-      <a href="#item" [% tooltip('A tooltip', 'bgcolor' => 'pink') %]>item</a>
+      <a href="#item" [% tooltip('A tooltip', 'bgcolor', 'pink') %]>item</a>
 
   Initialising the Tooltip Library
     The one additional step you will need to do is load in the tooltip
@@ -84,7 +84,7 @@ SUPPORT
     author..
 
 AUTHOR
-    Adam Kennedy (Maintainer), <http://ali.as/>, cpan@ali.as
+    Adam Kennedy , <http://ali.as/>, cpan@ali.as
 
 ACKOWLEDGEMENTS
     Thank you to Phase N Australia (<http://phase-n.com/>) for permitting
