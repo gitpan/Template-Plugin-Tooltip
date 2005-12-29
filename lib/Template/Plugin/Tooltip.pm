@@ -10,7 +10,10 @@ Template::Plugin::Tooltip - Template Toolkit plugin for HTML::Tooltip::JavaScrip
 
   Load the tooltip generator.
   Params are passed straight to to HTML::Tooltip::JavaScript->new
-  [% USE tooltip( ... ) %]
+  [% USE Tooltip( 'javascript_dir', '../../../static/js/', 'options',
+	bordercolor => "#000000",
+	title       => '',
+	) %]
   
   Add a tooltip to a link
   <a href="foo" [% tooltip(
@@ -44,17 +47,17 @@ parameters are passed directly to H::T::Javascript C<tooltip> method.
 To load the tooltip generator with the default options, you can simple do
 the following.
 
-  [% USE tooltip %]
+  [% USE Tooltip %]
 
 In the same way you pass params to the HTML::Tooltip::Javascript
 constructor, you can also pass params when loading in the Tooltip plugin.
 
-  [% USE tooltip('param', 'value') %]
+  [% USE Tooltip('param', 'value') %]
 
 =head2 Using the Tooltip Generator
 
-HTML::Tooltip::Javascript provides one simple method through which you
-generate all the different tooltips.
+L<HTML::Tooltip::Javascript> provides one simple method through which
+you generate all the different tooltips.
 
 In Template::Plugin::Tooltip, you just use the loaded plugin directly.
 
@@ -93,7 +96,7 @@ use HTML::Tooltip::Javascript ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.04';
+	$VERSION = '0.05';
 }
 
 
@@ -166,7 +169,7 @@ commercial project.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2004 Adam Kennedy. All rights reserved.
+Copyright (c) 2004-2005 Adam Kennedy. All rights reserved.
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
 

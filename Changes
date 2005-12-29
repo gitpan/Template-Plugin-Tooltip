@@ -1,5 +1,9 @@
 Revision history for Perl extension Template::Plugin::Tooltip
 
+0.05 Fri Dec 30 2005
+	- More POD corrections (sigh)
+	- Updated Module::Install
+
 0.04 Mon May 23 2005
 	- Minor POD corrections
 

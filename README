@@ -5,7 +5,10 @@ NAME
 SYNOPSIS
       Load the tooltip generator.
       Params are passed straight to to HTML::Tooltip::JavaScript->new
-      [% USE tooltip( ... ) %]
+      [% USE Tooltip( 'javascript_dir', '../../../static/js/', 'options',
+            bordercolor => "#000000",
+            title       => '',
+            ) %]
   
       Add a tooltip to a link
       <a href="foo" [% tooltip(
@@ -36,13 +39,13 @@ DESCRIPTION
     To load the tooltip generator with the default options, you can simple
     do the following.
 
-      [% USE tooltip %]
+      [% USE Tooltip %]
 
     In the same way you pass params to the HTML::Tooltip::Javascript
     constructor, you can also pass params when loading in the Tooltip
     plugin.
 
-      [% USE tooltip('param', 'value') %]
+      [% USE Tooltip('param', 'value') %]
 
   Using the Tooltip Generator
     HTML::Tooltip::Javascript provides one simple method through which you
@@ -92,9 +95,9 @@ ACKOWLEDGEMENTS
     commercial project.
 
 COPYRIGHT
-    Copyright (c) 2004 Adam Kennedy. All rights reserved. This program is
-    free software; you can redistribute it and/or modify it under the same
-    terms as Perl itself.
+    Copyright (c) 2004-2005 Adam Kennedy. All rights reserved. This program
+    is free software; you can redistribute it and/or modify it under the
+    same terms as Perl itself.
 
     The full text of the license can be found in the LICENSE file included
     with this module.

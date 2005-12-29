@@ -1,17 +1,17 @@
-name: Template-Plugin-Tooltip
-version: 0.04
 abstract: Template Toolkit plugin for HTML::Tooltip::JavaScript
-author: Adam Kennedy <cpan@ali.as>
-license: perl
-distribution_type: module
+author: 'Adam Kennedy , L<http://ali.as/>, cpan@ali.as'
 build_requires:
+  File::Spec: 0.80
   Test::More: 0.47
-  File::Spec: 0.82
-requires:
-  perl: 5.005
-  Template: 2.10
-  HTML::Tooltip::Javascript: 0.03
+distribution_type: module
+generated_by: Module::Install version 0.50
+license: perl
+name: Template-Plugin-Tooltip
 no_index:
   directory:
     - inc
-generated_by: Module::Install version 0.36
+    - t
+requires:
+  HTML::Tooltip::Javascript: 0.03
+  Template: 2.10
+version: 0.05
