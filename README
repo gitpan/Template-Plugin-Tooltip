@@ -11,7 +11,7 @@ SYNOPSIS
             ) %]
   
       Add a tooltip to a link
-      <a href="foo" [% tooltip(
+      <a href="foo" [% Tooltip(
           html_tooltip_content,
           param, value,
           param, value,
@@ -53,18 +53,18 @@ DESCRIPTION
 
     In Template::Plugin::Tooltip, you just use the loaded plugin directly.
 
-      [% tooltip( 'This is my plain tooltip' ) %]
+      [% Tooltip( 'This is my plain tooltip' ) %]
 
     This only generates the Javascript tag properties, so this needs to be
     used within a tag, like an anchor tag.
 
-      <a href="#item" [% tooltip('A tooltip') %]>item</a>
+      <a href="#item" [% Tooltip('A tooltip') %]>item</a>
 
     The first param is literal HTML content, and you can provide any
     additional parameters you want for the tooltip, as you would do create
     the tooltip directly.
 
-      <a href="#item" [% tooltip('A tooltip', 'bgcolor', 'pink') %]>item</a>
+      <a href="#item" [% Tooltip('A tooltip', 'bgcolor', 'pink') %]>item</a>
 
   Initialising the Tooltip Library
     The one additional step you will need to do is load in the tooltip
@@ -73,7 +73,7 @@ DESCRIPTION
     To do this, simple add the following to the end of the page, or to the
     <head> section of your HTML document.
 
-      [% tooltip() %]
+      [% Tooltip() %]
 
   Use as a Filter
     TO BE COMPLETED
@@ -87,7 +87,7 @@ SUPPORT
     author..
 
 AUTHOR
-    Adam Kennedy , <http://ali.as/>, cpan@ali.as
+    Adam Kennedy <cpan@ali.as>
 
 ACKOWLEDGEMENTS
     Thank you to Phase N Australia (<http://phase-n.com/>) for permitting
@@ -95,7 +95,7 @@ ACKOWLEDGEMENTS
     commercial project.
 
 COPYRIGHT
-    Copyright (c) 2004-2005 Adam Kennedy. All rights reserved. This program
+    Copyright (c) 2004-2006 Adam Kennedy. All rights reserved. This program
     is free software; you can redistribute it and/or modify it under the
     same terms as Perl itself.
 

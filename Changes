@@ -1,5 +1,12 @@
 Revision history for Perl extension Template::Plugin::Tooltip
 
+0.06 Sat 25 Feb 2006
+	- No functional changes
+	- Updated Module::Install to 0.57
+	- Resolved #17512: Incorrect docs (NIKC)
+	- Moved from old CVS to new SVN repository
+	- Updated test to match the change
+
 0.05 Fri Dec 30 2005
 	- More POD corrections (sigh)
 	- Updated Module::Install

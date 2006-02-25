@@ -1,17 +1,20 @@
-abstract: Template Toolkit plugin for HTML::Tooltip::JavaScript
-author: 'Adam Kennedy , L<http://ali.as/>, cpan@ali.as'
-build_requires:
-  File::Spec: 0.80
-  Test::More: 0.47
-distribution_type: module
-generated_by: Module::Install version 0.50
-license: perl
-name: Template-Plugin-Tooltip
-no_index:
-  directory:
+
+no_index: 
+  directory: 
     - inc
     - t
-requires:
+generated_by: Module::Install version 0.57
+distribution_type: module
+version: 0.06
+name: Template-Plugin-Tooltip
+author: Adam Kennedy <cpan@ali.as>
+license: perl
+build_requires: 
+  Test::More: 0.47
+  File::Spec: 0.80
+requires: 
+  Scalar::Util: 1.15
+  perl: 5.005
   HTML::Tooltip::Javascript: 0.03
   Template: 2.10
-version: 0.05
+abstract: Template Toolkit plugin for HTML::Tooltip::JavaScript

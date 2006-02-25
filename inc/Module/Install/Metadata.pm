@@ -1,24 +1,25 @@
 #line 1 "inc/Module/Install/Metadata.pm - /usr/local/share/perl/5.8.4/Module/Install/Metadata.pm"
 package Module::Install::Metadata;
-use Module::Install::Base;
-@ISA = qw(Module::Install::Base);
 
-$VERSION = '0.05';
+use Module::Install::Base;
+@ISA = qw{Module::Install::Base};
+
+$VERSION = '0.57';
 
 use strict 'vars';
-use vars qw($VERSION);
 
-my @scalar_keys = qw<
-    name module_name version abstract author license
+my @scalar_keys = qw{
+    name module_name abstract author version license
     distribution_type perl_version tests
->;
-my @tuple_keys = qw<
-    build_requires requires recommends bundles
->;
+};
 
-sub Meta { shift }
+my @tuple_keys = qw{
+    build_requires requires recommends bundles
+};
+
+sub Meta            { shift        }
 sub Meta_ScalarKeys { @scalar_keys }
-sub Meta_TupleKeys { @tuple_keys }
+sub Meta_TupleKeys  { @tuple_keys  }
 
 foreach my $key (@scalar_keys) {
     *$key = sub {
@@ -27,13 +28,6 @@ foreach my $key (@scalar_keys) {
         $self->{values}{$key} = shift;
         return $self;
     };
-}
-
-sub sign {
-    my $self = shift;
-    return $self->{values}{sign} if defined wantarray and !@_;
-    $self->{values}{sign} = ( @_ ? $_[0] : 1 );
-    return $self;
 }
 
 foreach my $key (@tuple_keys) {
@@ -59,8 +53,33 @@ foreach my $key (@tuple_keys) {
     };
 }
 
+sub sign {
+    my $self = shift;
+    return $self->{'values'}{'sign'} if defined wantarray and !@_;
+    $self->{'values'}{'sign'} = ( @_ ? $_[0] : 1 );
+    return $self;
+}
+
+sub dynamic_config {
+	my $self = shift;
+	unless ( @_ ) {
+		warn "You MUST provide an explicit true/false value to dynamic_config, skipping\n";
+		return $self;
+	}
+	$self->{'values'}{'dynamic_config'} = $_[0] ? 1 : 0;
+	return $self;
+}
+
 sub all_from {
     my ( $self, $file ) = @_;
+
+    unless ( defined($file) ) {
+        my $name = $self->name
+            or die "all_from called with no args without setting name() first";
+        $file = join('/', 'lib', split(/-/, $name)) . '.pm';
+        $file =~ s{.*/}{} unless -e $file;
+        die "all_from: cannot find $file from $name" unless -e $file;
+    }
 
     $self->version_from($file)      unless $self->version;
     $self->perl_version_from($file) unless $self->perl_version;
@@ -119,8 +138,7 @@ sub feature {
         # The user used ->feature like ->features by passing in the second
         # argument as a reference.  Accomodate for that.
         $mods = $_[0];
-    }
-    else {
+    } else {
         $mods = \@_;
     }
 
@@ -192,8 +210,11 @@ sub abstract_from {
     my ( $self, $file ) = @_;
     require ExtUtils::MM_Unix;
     $self->abstract(
-        bless( { DISTNAME => $self->name }, 'ExtUtils::MM_Unix' )
-          ->parse_abstract($file) );
+        bless(
+            { DISTNAME => $self->name },
+            'ExtUtils::MM_Unix'
+        )->parse_abstract($file)
+     );
 }
 
 sub _slurp {

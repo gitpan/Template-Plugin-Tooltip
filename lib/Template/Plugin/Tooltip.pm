@@ -16,7 +16,7 @@ Template::Plugin::Tooltip - Template Toolkit plugin for HTML::Tooltip::JavaScrip
 	) %]
   
   Add a tooltip to a link
-  <a href="foo" [% tooltip(
+  <a href="foo" [% Tooltip(
       html_tooltip_content,
       param, value,
       param, value,
@@ -61,18 +61,18 @@ you generate all the different tooltips.
 
 In Template::Plugin::Tooltip, you just use the loaded plugin directly.
 
-  [% tooltip( 'This is my plain tooltip' ) %]
+  [% Tooltip( 'This is my plain tooltip' ) %]
 
 This only generates the Javascript tag properties, so this needs to be used
 within a tag, like an anchor tag.
 
-  <a href="#item" [% tooltip('A tooltip') %]>item</a>
+  <a href="#item" [% Tooltip('A tooltip') %]>item</a>
 
 The first param is literal HTML content, and you can provide any additional
 parameters you want for the tooltip, as you would do create the tooltip
 directly.
 
-  <a href="#item" [% tooltip('A tooltip', 'bgcolor', 'pink') %]>item</a>
+  <a href="#item" [% Tooltip('A tooltip', 'bgcolor', 'pink') %]>item</a>
 
 =head2 Initialising the Tooltip Library
 
@@ -82,7 +82,7 @@ JavaScript library that drives the whole thing.
 To do this, simple add the following to the end of the page, or to the
 E<lt>headE<gt> section of your HTML document.
 
-  [% tooltip() %]
+  [% Tooltip() %]
 
 =head2 Use as a Filter
 
@@ -90,13 +90,20 @@ TO BE COMPLETED
 
 =cut
 
+use 5.005;
 use strict;
 use base 'Template::Plugin';
+use Scalar::Util              ();
 use HTML::Tooltip::Javascript ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.05';
+	$VERSION = '0.06';
+}
+
+# Inlined copy of Params::Util::_INSTANCE
+sub _INSTANCE ($$) {
+	(Scalar::Util::blessed($_[0]) and $_[0]->isa($_[1])) ? $_[0] : undef;
 }
 
 
@@ -108,8 +115,8 @@ BEGIN {
 
 sub new {
 	my $class   = ref $_[0] ? ref shift : shift;
-	my $Context = UNIVERSAL::isa(ref $_[0], 'Template::Context') ? shift
-		: $class->error('Tooltip constructor called without Template::Context');
+	my $Context = _INSTANCE(shift, 'Template::Context')
+		or $class->error('Tooltip constructor called without Template::Context');
 
 	# Create a new ::Tooltip object, passing on params
 	my $Tooltip = HTML::Tooltip::Javascript->new( @_ )
@@ -138,11 +145,11 @@ sub tooltip {
 }
 
 sub head {
-	shift->at_end;
+	$_[0]->at_end;
 }
 
 sub at_end {
-	shift->{Tooltip}->at_end;
+	$_[0]->{Tooltip}->at_end;
 }
 
 1;
@@ -159,7 +166,7 @@ For other issues, or commercial enhancement or support, contact the author..
 
 =head1 AUTHOR
 
-Adam Kennedy , L<http://ali.as/>, cpan@ali.as
+Adam Kennedy E<lt>cpan@ali.asE<gt>
 
 =head1 ACKOWLEDGEMENTS
 
@@ -169,7 +176,7 @@ commercial project.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2004-2005 Adam Kennedy. All rights reserved.
+Copyright (c) 2004-2006 Adam Kennedy. All rights reserved.
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
 
